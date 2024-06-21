@@ -312,6 +312,9 @@ class CMakeExtension(setuptools.Extension):
             f"-DPython_INCLUDE_DIR={sysconfig.get_path('include')}",
             f"-DCMAKE_BUILD_TYPE={build_type}",
             f"-DCMAKE_INSTALL_PREFIX={install_dir}",
+            f"-DCMAKE_C_COMPILER={os.environ['CMAKE_C_COMPILER']}",
+            f"-DCMAKE_CXX_COMPILER={os.environ['CMAKE_CXX_COMPILER']}",
+            f"-DCMAKE_CUDA_HOST_COMPILER={os.environ['CMAKE_CUDA_HOST_COMPILER']}",
         ]
         configure_command += self.cmake_flags
         if found_ninja():
